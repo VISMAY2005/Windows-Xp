@@ -1,0 +1,451 @@
+/* --- RESET & FONTS --- */
+* { box-sizing: border-box; user-select: none; }
+body { margin: 0; padding: 0; font-family: 'Tahoma', sans-serif; overflow: hidden; background: #000; height: 100vh; }
+.hidden { display: none !important; }
+
+/* --- 1. BOOT SCREEN --- */
+#boot-screen {
+    width: 100%; height: 100%; background: #000; color: white;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.boot-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 50px; }
+.boot-logo img { width: 80px; }
+.boot-text { font-size: 24px; font-weight: bold; line-height: 1; }
+.orange { color: #FF6600; font-style: italic; }
+.loading-bar {
+    width: 200px; height: 15px; border: 2px solid #555; border-radius: 4px; padding: 2px; position: relative; overflow: hidden;
+}
+.block {
+    width: 15px; height: 100%; background: #2f50ce; display: inline-block;
+    box-shadow: 0 0 5px #2f50ce; animation: load 2s infinite linear; position: absolute; border-radius: 2px;
+}
+.block:nth-child(1) { animation-delay: 0s; }
+.block:nth-child(2) { animation-delay: 0.34s; }
+.block:nth-child(3) { animation-delay: 0.68s; }
+@keyframes load { 0% { left: -15px; } 100% { left: calc(100% - 17px); } }
+/* --- 2. LOGIN SCREEN --- */
+#login-screen {
+    width: 100%; height: 100%; background: #5a7edc; /* XP Blue */
+    background: radial-gradient(circle, #83a5f7 0%, #5a7edc 100%);
+    position: relative; display: flex; align-items: center; justify-content: center;
+}
+.blue-bar-top, .blue-bar-bottom {
+    position: absolute; left: 0; width: 100%; height: 80px; background: #001e59; border-top: 2px solid #f68536; z-index: 2;
+}
+.blue-bar-top { top: 0; border-top: none; border-bottom: 2px solid #f68536; }
+.blue-bar-bottom { bottom: 0; display: flex; align-items: center; padding-left: 20px; }
+.login-container { display: flex; align-items: center; gap: 40px; z-index: 5; }
+.login-left { text-align: right; color: white; }
+.login-left img { width: 60px; } /* Reduced Size as requested */
+.login-text { font-size: 30px; font-weight: bold; text-shadow: 2px 2px 5px #333; }
+.divider { width: 2px; height: 200px; background: linear-gradient(to bottom, transparent, white, transparent); }
+.user-row {
+    display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 8px;
+    cursor: pointer; transition: 0.2s;
+}
+.user-row:hover { background: rgba(255,255,255,0.2); }
+.user-icon { width: 60px; height: 60px; background: yellow; border: 2px solid white; border-radius: 5px; overflow: hidden; }
+.user-icon img { width: 100%; height: 100%; object-fit: cover; }
+.user-name { color: white; font-size: 20px; font-weight: bold; }
+.user-status { color: #dce4f9; font-size: 14px; }
+.shutdown-btn { color: white; display: flex; align-items: center; gap: 5px; cursor: pointer; opacity: 0.8; }
+.shutdown-btn:hover { opacity: 1; }
+.icon-off { width: 20px; height: 20px; background: red; border: 2px solid white; border-radius: 3px; }
+
+/* --- 3. WELCOME SCREEN --- */
+#welcome-screen {
+    width: 100%; height: 100%; background: #5a7edc; position: relative;
+    display: flex; align-items: center; justify-content: center;
+}
+.welcome-bar { position: absolute; left: 0; width: 100%; height: 80px; background: #001e59; }
+.welcome-bar.top { top: 0; border-bottom: 2px solid #f68536; }
+.welcome-bar.bottom { bottom: 0; border-top: 2px solid #f68536; }
+.welcome-center { color: white; font-size: 40px; font-weight: bold; font-style: italic; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+
+/* --- 4. DESKTOP --- */
+#desktop {
+    width: 100%; height: 100%;
+    background: url('./assets/images/wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+#desktop-icons {
+    padding: 10px; display: flex; flex-direction: column; gap: 20px; flex-wrap: wrap; height: 90%; align-content: flex-start;
+}
+.icon {
+    width: 80px; text-align: center; color: white; cursor: pointer;
+    text-shadow: 1px 1px 2px black;
+    display: flex; flex-direction: column; align-items: center; gap: 4px; /* Stack icon and label vertically */
+}
+.icon img { width: 32px; height: 32px; display: block; } /* Fixed icon size */
+.icon span { display: block; background: transparent; padding: 2px; border-radius: 2px; font-size: 11px; text-align: center; }
+.icon:active span { background: #0b61ff; }
+
+/* --- TASKBAR --- */
+#taskbar {
+    position: absolute; bottom: 0; width: 100%; height: 30px;
+    background: linear-gradient(to bottom, #245DDA, #174092);
+    display: flex; align-items: center; z-index: 1000;
+}
+#start-btn {
+    width: 100px; height: 30px;
+    background: linear-gradient(to bottom, #388E3C, #68BC49 15%, #388E3C);
+    border-radius: 0 10px 10px 0;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: bold; font-style: italic;
+    cursor: pointer; box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+}
+#start-btn:hover { filter: brightness(1.1); }
+.win-logo, .win-logo-sm { width: 16px; height: 16px; background: url('./assets/images/xp-logo.png') no-repeat center center; background-size: contain; background-color: transparent; border-radius: 50%; margin-right: 5px; }
+
+#taskbar-apps { flex: 1; display: flex; padding: 2px 5px; gap: 3px; }
+.taskbar-tab {
+    width: 150px; height: 26px; background: #3c81f0; color: white; border-radius: 3px;
+    display: flex; align-items: center; padding: 0 5px; font-size: 11px; cursor: pointer;
+    box-shadow: inset 0 0 5px rgba(255,255,255,0.2);
+}
+.taskbar-tab:hover { background: #5794f7; }
+.taskbar-tab.active {
+  background: linear-gradient(#3c7cff, #1f4fd8);
+}
+
+.taskbar-tab img { width: 16px; margin-right: 5px; }
+
+#tray {
+    background: #0b67d8; height: 30px; padding: 0 15px; border-left: 1px solid #063c80;
+    display: flex; align-items: center; gap: 10px; color: white; font-size: 11px;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+}
+.tray-icon img { width: 16px; height: 16px; }
+
+/* --- START MENU (Complex Grid) --- */
+#start-menu {
+    position: absolute; bottom: 30px; left: 0; width: 400px; 
+    background: white; border-radius: 5px 5px 0 0;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    border: 2px solid #003399; display: flex; flex-direction: column;
+    z-index: 999;
+}
+.start-header {
+    height: 60px; background: linear-gradient(to bottom, #187ce4, #136cc6);
+    display: flex; align-items: center; padding: 10px; gap: 10px;
+    color: white; border-radius: 3px 3px 0 0; border-bottom: 2px solid #e98923;
+}
+.user-avatar-sm { width: 40px; height: 40px; border: 2px solid white; border-radius: 4px; }
+.user-name-menu { font-weight: bold; font-size: 16px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+
+.start-body { display: flex; height: 300px; } /* Fixed height */
+.col-left { flex: 1; padding: 5px; display: flex; flex-direction: column; gap: 5px; }
+.col-right { flex: 1; background: #d3e5fa; padding: 5px; border-left: 1px solid #aebfd6; display: flex; flex-direction: column; gap: 5px; color: #001e59; }
+
+.start-item { display: flex; align-items: center; padding: 5px; cursor: pointer; color: #333; }
+.start-item:hover { background: #316AC5; color: white !important; }
+.start-item img { width: 32px; height: 32px; margin-right: 10px; }
+.start-item.sm img { width: 32px; height: 32px; }
+.start-item .text { font-size: 11px; }
+.start-item .text span { color: #888; }
+.start-item:hover .text span { color: #ddd; }
+.bold { font-weight: bold; }
+.line { height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); margin: 3px 0; }
+
+/* Search area */
+.start-search-area {
+    background: #d3e5fa; border-top: 1px solid #aebfd6;
+    padding: 6px 6px; display: flex; align-items: center; gap: 8px;
+    position: relative;
+}
+
+.search-dog {
+    width: 35px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 160px;
+    image-rendering: pixelated; /* Keeps the retro look */
+}
+
+.search-box { flex: 1; display: flex; flex-direction: column; }
+.search-box label { font-size: 10px; color: #001e59; font-weight: bold; }
+.search-box input { width: 70%; border: 1px solid #7f9db9; padding: 2px 4px; font-size: 11px; height: 18px; }
+
+.start-footer {
+    height: 40px; background: linear-gradient(to bottom, #187ce4, #136cc6);
+    display: flex; justify-content: flex-end; align-items: center; gap: 15px; padding-right: 15px;
+    color: white; font-size: 11px; border-top: 2px solid #e98923;
+}
+.footer-btn { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.icon-restart { width: 16px; height: 16px; background: green; border: 1px solid white; border-radius: 2px; }
+
+/* --- WINDOWS --- */
+.window {
+    position: absolute; background: #ece9d8;
+    border: 3px solid #0055ea; border-radius: 5px 5px 0 0;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+}
+.title-bar {
+  height: 32px;
+  background: linear-gradient(to bottom, #0058ee, #026aff);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  color: white;
+  font-size: 12px;
+  user-select: none;
+}
+
+.controls {
+  display: flex;
+  gap: 6px;
+}
+
+.controls div {
+  width: 24px;
+  height: 20px;
+  background: rgba(181, 23, 23, 0.15);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.controls img {
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.controls div:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.window-content { flex: 1; overflow: auto; background: white; position: relative; }
+
+/* About Me Specific Layout */
+.about-container { display: flex; height: 100%; }
+.about-sidebar {
+    width: 200px; background: #d3e5fa; padding: 15px; border-right: 1px solid #999;
+}
+.skill-box { background: white; border: 1px solid #0055ea; border-radius: 5px; margin-bottom: 10px; overflow: hidden; }
+.skill-header { background: linear-gradient(to right, white, #d3e5fa); padding: 5px; color: #003399; font-weight: bold; font-size: 12px; border-bottom: 1px solid #ccc; cursor: pointer; }
+.skill-list { padding: 10px; font-size: 11px; color: #333; line-height: 1.6; }
+.about-main { flex: 1; padding: 20px; color: #333; overflow-y: auto; }
+.about-main h2 { color: #003399; margin-top: 0; }
+
+/* Contact Form */
+.contact-form { padding: 20px; background: #ece9d8; height: 100%; display: flex; flex-direction: column; gap: 10px; }
+.form-row { display: flex; align-items: center; gap: 10px; }
+.form-row label { width: 60px; text-align: right; font-size: 12px; }
+.form-row input { flex: 1; border: 1px solid #7f9db9; padding: 3px; }
+.form-body { flex: 1; border: 1px solid #7f9db9; background: white; padding: 10px; font-family: 'Courier New', monospace; }
+.toolbar { background: #ece9d8; padding: 5px; border-bottom: 1px solid #aaa; margin-bottom: 10px; }
+.btn-send { border: 1px solid #333; padding: 2px 10px; cursor: pointer; background: #f0f0f0; }
+
+/* Projects Grid */
+.projects-grid { display: flex; flex-wrap: wrap; gap: 15px; padding: 15px; }
+.project-card { width: 120px; height: 120px; border: 1px solid #ccc; text-align: center; cursor: pointer; padding: 5px; }
+.project-card:hover { border-color: blue; background: #f0f0ff; }
+.project-card img { width: 80px; height: 60px; object-fit: cover; background: #ddd; margin-bottom: 5px; }
+
+/* XP window compatibility styles (used by core/windowManager.js) 🔧 */
+.xp-window {
+  position: absolute; background: #ece9d8;
+  border: 3px solid #0055ea; border-radius: 5px 5px 0 0;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+}
+.xp-titlebar {
+  /* [ Minimize ][ Maximize ][ Close ] */
+  height: 32px;
+  background: linear-gradient(to bottom, #0058ee, #026aff);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.xp-title-left { display:flex; align-items:center; gap:8px; }
+.xp-title-text { font-size: 12px; }
+.xp-title-right { display:flex; gap:6px; align-items:center; }
+.xp-btn-minimize,
+.xp-btn-maximize,
+.xp-btn-close {
+  border: none;
+  background: rgba(255,255,255,0.06);
+  color: white;
+  width: 26px;
+  height: 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.xp-window-content { flex: 1; overflow: hidden; background: white; position: relative; }
+
+/* Taskbar app button */
+.taskbar-app-button { display:flex; align-items:center; gap:6px; padding: 2px 8px; border-radius:4px; background: transparent; color: white; cursor: pointer; border: none; }
+.taskbar-app-button img { width:16px; height:16px; }
+.taskbar-app-button:hover { background: rgba(255,255,255,0.06); }
+
+/* Wolfenstein controls overlay */
+.wolf-controls { position: absolute; left: 50%; transform: translateX(-50%); bottom: 12px; display: flex; gap: 8px; z-index: 3; }
+.wolf-controls button { background: rgba(0,0,0,0.6); color: white; border: 1px solid rgba(255,255,255,0.12); padding: 6px 10px; border-radius:4px; cursor:pointer; }
+.wolf-controls button:hover { filter: brightness(1.1); }
+
+.wolf-status { color: #fff; font-size: 12px; background: rgba(0,0,0,0.5); padding:6px 8px; border-radius:4px; }
+
+/* keep search dog retro pixelated */
+.search-dog { image-rendering: pixelated; }
+
+.user-status {
+    color: #dce4f9;
+    font-size: 14px;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+
+
+
+/* games  next screen (confiramtion)*/ 
+.xp-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.xp-confirm-box {
+  width: 320px;
+  background: #ece9d8;
+  border: 2px solid #0058ee;
+  font-family: Tahoma, sans-serif;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+}
+
+.xp-confirm-title {
+  background: linear-gradient(#0058ee, #026aff);
+  color: white;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.xp-confirm-body {
+  padding: 16px;
+  font-size: 12px;
+  color: #000;
+}
+
+.xp-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.xp-confirm-actions button {
+  min-width: 70px;
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+/* ================================================================
+   XP BALLOON NOTIFICATION (tray tip, e.g. "Welcome to ... XP")
+   ================================================================ */
+.xp-balloon {
+  position: fixed;
+  bottom: 40px;
+  right: 12px;
+  width: 260px;
+  background: linear-gradient(to bottom, #ffffe1, #fffdc7);
+  border: 1px solid #8a8a5c;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: Tahoma, sans-serif;
+  color: #222;
+  z-index: 5000;
+  animation: balloon-in 0.25s ease-out;
+}
+.xp-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 22px;
+  width: 0; height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fffdc7;
+}
+@keyframes balloon-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.xp-balloon-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+.xp-balloon-header img { width: 16px; height: 16px; }
+.xp-balloon-title { font-weight: bold; color: #003399; font-size: 13px; flex: 1; }
+.xp-balloon-close { cursor: pointer; color: #555; font-size: 13px; padding: 0 2px; }
+.xp-balloon-close:hover { color: #000; }
+.xp-balloon-body { font-size: 12px; line-height: 1.5; }
+.xp-balloon-body ul { margin: 4px 0 0 16px; padding: 0; }
+.xp-balloon-tip { margin-top: 8px; padding-top: 6px; border-top: 1px solid #dcdca0; font-size: 11px; color: #777; font-style: italic; }
+
+/* ================================================================
+   BROWSER CHROME (reusable IE-style toolbar for any window)
+   Used by buildBrowserChrome() in script.js for About Me / Projects.
+   ================================================================ */
+.browser-chrome { display: flex; flex-direction: column; height: 100%; background: #ece9d8; }
+.browser-menubar { padding: 4px 8px; font-size: 11px; color: #333; border-bottom: 1px solid #cbc7ba; background: #f3f2ec; }
+.browser-menubar span { margin-right: 14px; }
+.browser-toolbar { display: flex; align-items: center; gap: 4px; padding: 6px 8px; border-bottom: 1px solid #aaa; background: #ece9d8; flex-wrap: wrap; }
+.browser-toolbar-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; padding: 3px 8px; border: 1px solid transparent; border-radius: 3px;
+  cursor: pointer; font-size: 10px; color: #333; background: none; min-width: 44px;
+}
+.browser-toolbar-btn img { width: 20px; height: 20px; }
+.browser-toolbar-btn:hover { background: #d3e5fa; border-color: #7f9db9; }
+.browser-toolbar-btn.disabled { cursor: default; opacity: 0.45; }
+.browser-toolbar-btn.disabled:hover { background: none; border-color: transparent; }
+.browser-toolbar-sep { width: 1px; height: 28px; background: #bbb; margin: 0 4px; }
+.browser-address-row { display: flex; align-items: center; gap: 6px; padding: 4px 8px; border-bottom: 1px solid #aaa; background: #ece9d8; font-size: 11px; }
+.browser-address-row img { width: 14px; height: 14px; }
+.browser-address-bar { flex: 1; border: 1px solid #7f9db9; background: #fff; padding: 3px 6px; color: #333; }
+.browser-go-btn { border: 1px solid #7f9db9; background: #f0f0f0; padding: 2px 10px; cursor: pointer; font-size: 11px; }
+.browser-body { flex: 1; overflow-y: auto; background: #fff; }
+.browser-statusbar { border-top: 1px solid #aaa; background: #ece9d8; padding: 2px 8px; font-size: 11px; color: #333; }
+
+/* ================================================================
+   PROJECT GALLERY (My Projects window content)
+   ================================================================ */
+.pg-social { display: flex; gap: 10px; padding: 10px 16px 0; }
+.pg-social img { width: 20px; height: 20px; cursor: pointer; opacity: 0.85; }
+.pg-social img:hover { opacity: 1; }
+.pg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; padding: 16px; }
+.pg-card { border: 1px solid #ccc; border-radius: 4px; overflow: hidden; cursor: pointer; background: #fafafa; transition: transform 0.1s; }
+.pg-card:hover { border-color: #0055ea; transform: translateY(-2px); }
+.pg-thumb { width: 100%; height: 100px; background: linear-gradient(135deg, #3c7cff, #0b1f4d); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 22px; font-weight: bold; overflow: hidden; }
+.pg-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pg-card-body { padding: 8px; }
+.pg-card-title { font-size: 12px; font-weight: bold; color: #222; }
+.pg-card-brief { font-size: 11px; color: #666; margin-top: 3px; line-height: 1.4; }
+.pg-detail { padding: 18px; }
+.pg-detail-thumb { width: 100%; max-height: 260px; object-fit: cover; border-radius: 4px; margin-bottom: 14px; background: linear-gradient(135deg, #3c7cff, #0b1f4d); }
+.pg-detail h2 { margin: 0 0 4px; color: #003399; }
+.pg-detail-desc { font-size: 12px; line-height: 1.6; color: #333; white-space: pre-line; }
+.pg-detail-actions { margin-top: 16px; display: flex; gap: 10px; }
+.pg-btn { border: 1px solid #7f9db9; background: #f0f0f0; padding: 5px 12px; cursor: pointer; font-size: 11px; border-radius: 2px; }
+.pg-btn.primary { background: #0055ea; color: #fff; border-color: #003399; }
+
+/* Dark theme toggle for the Projects window */
+.pg-dark { background: #111; }
+.pg-dark .pg-card { background: #1c1c1c; border-color: #333; }
+.pg-dark .pg-card-title { color: #eee; }
+.pg-dark .pg-card-brief { color: #999; }
+.pg-dark .pg-detail h2 { color: #6fa8ff; }
+.pg-dark .pg-detail-desc { color: #ddd; }
+.pg-dark .browser-body.pg-dark { background: #111; }

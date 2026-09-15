@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vismay XP - Visual Designer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="boot-screen">
+        <div class="boot-logo">
+            <img src="./assets/images/xp-logo.png" alt="Windows XP">
+            <div class="boot-text">Microsoft <br><span>Windows</span><span class="orange">Xp</span><br>
+            
+            <div class="user-status"> &copy; Portfolio</div>
+            </div>
+        </div>
+        <div class="loading-bar">
+            <div class="block"></div><div class="block"></div><div class="block"></div>
+        </div>
+    </div>
+
+    <div id="login-screen" class="hidden">
+        <div class="blue-bar-top"></div>
+        <div class="login-container">
+            <div class="login-left">
+                <img src="./assets/images/xp-logo.png" alt="XP Logo">
+                <div class="login-text">Microsoft<br><span>Windows</span><span class="orange">xp</span></div>
+                <p>To begin, click your user name</p>
+            </div>
+            <div class="divider"></div>
+            <div class="login-right">
+                <div class="user-row" onclick="loginUser()">
+                    <div class="user-icon"><img src="./assets/images/avatar.png"></div>
+                    <div class="user-info">
+                        <div class="user-name">Vismay Rao BN</div>
+                        <div class="user-status">Admin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blue-bar-bottom">
+            <div class="shutdown-btn" onclick="triggerShutdown()">
+                <div class="icon-off"></div> Turn off computer
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="welcome-screen" class="hidden">
+        <div class="welcome-bar top"></div>
+        <div class="welcome-center">
+            <span>Welcome</span>
+        </div>
+        <div class="welcome-bar bottom"></div>
+    </div>
+
+    <div id="desktop" class="hidden">
+
+
+
+
+        
+        <div id="desktop-icons">
+            <div class="icon" ondblclick="openWindow('about')">
+                <img src="./assets/images/about.png">
+                <span>About Me</span>
+            </div>
+
+
+            <div class="icon" ondblclick="openWindow('projects')">
+                <img src="./assets/images/projects.png">
+                <span>My Projects</span>
+            </div>
+
+
+            <div class="icon" ondblclick="openWindow('contact')">
+                <img src="./assets/images/email.png">
+                <span>Contact Me</span>
+            </div>
+
+
+            <div class="icon" ondblclick="openWindow('github')">
+                <img src="./assets/images/github.png"> <span>GitHub</span>
+            </div>
+
+
+            
+            <div class="icon" ondblclick="openWindow('resume')">
+                <img src="./assets/images/resume.png">
+                <span>Resume.pdf</span>
+            </div>
+
+
+            <div class="icon" ondblclick="openWindow('wolfenstein')">
+                 <img src="./assets/images/wolfenstein-icon.png">
+                 <span>Fav Quote</span>
+                     </div>
+
+                <div class="icon" ondblclick="openWindow('snake')">
+                     <img src="./assets/images/snake-icon.png">
+                    <span>Snake Game</span>
+                </div>      
+
+                <div class="icon" ondblclick="launchExternalGame('Road Rash', 'https://dos.zone/road-rash/')">
+                 <img src="./assets/images/roadrash.png">
+                <span>Road Rash</span>
+                </div>
+
+                  <div class="icon" ondblclick="launchExternalGame('Grand Theft Auto', 'https://dos.zone/grand-theft-auto-1997/')">
+                 <img src="./assets/images/gta1997.png">
+                <span>Grand Theft Auto 1997</span>
+                </div>
+
+
+                <div class="icon" ondblclick="launchExternalGame('Wolfenstein 3D', 'https://dos.zone/wolfenstein-3d-may-05-1992/')">
+                 <img src="./assets/images/wolfenstein-3d.png">
+                <span>Wolfenstein 3D </span>
+                </div>
+
+                
+                <div class="icon" ondblclick="launchExternalGame('Need for Speed', 'https://dos.zone/the-need-for-speed-sep-1995/')">
+                 <img src="./assets/images/needforspeed.png">
+                <span>Need for Speed 1995</span>
+                </div>
+
+                <div class="icon" ondblclick="launchExternalGame('Diablo', 'https://dos.zone/diablo-1996/')">
+                 <img src="./assets/images/diablo.png">
+                <span>Diablo</span>
+                </div>
+
+
+                <div class="icon" ondblclick="launchExternalGame('Purble Palace', 'https://purbleplace-online.com/purble-place/')">
+                 <img src="./assets/images/purblepalace.png">
+                <span>Purble Place</span>
+                </div>
+
+
+                 <div class="icon" ondblclick="launchExternalGame('RTCW-DEMO', 'https://playminigames.net/game/return-to-castle-wolfenstein')">
+                 <img src="./assets/images/rtcw.png">
+                <span>RTCW-Demo</span>
+                </div>
+
+
+
+
+
+        </div>
+
+        <div id="window-area"></div> 
+
+        <div id="start-menu" class="hidden">
+            <div class="start-header">
+                <img src="./assets/images/avatar.png" class="user-avatar-sm"> 
+                <span class="user-name-menu">Vismay Rao BN</span> <span class="user-status-menu">Administrator</span>
+            </div>
+
+
+            <div class="start-body">
+                <div class="col-left">
+                    <div class="start-item" onclick="openWindow('chrome')">
+                        <img src="./assets/images/chrome.png">
+                        <div class="text"><strong>Internet</strong><br><span>Google Chrome</span></div>
+                    </div>
+
+
+                    <div class="start-item" onclick="openWindow('contact')">
+                        <img src="./assets/images/email.png">
+                        <div class="text"><strong>E-mail</strong><br><span>Contact Me</span></div>
+                    </div>
+
+
+                    <div class="line"></div>
+                    <div class="start-item sm" onclick="openWindow('linkedin')">
+                        <img src="./assets/images/linkedin.png"> <span>LinkedIn</span>
+                    </div>
+
+
+                    <div class="start-item sm" onclick="openWindow('instagram')">
+                        <img src="./assets/images/insta.png"> <span>Instagram</span>
+                    </div>
+
+
+                    <div class="start-item sm" onclick="openWindow('github')">
+                        <img src="./assets/images/github.png"> <span>Github</span>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-right">
+                    <div class="start-item sm" onclick="openWindow('projects')">
+                        <img src="./assets/images/projects.png"> <span>My Projects</span>
+                    </div>
+                    <div class="start-item sm" onclick="openWindow('about')">
+                        <img src="./assets/images/about.png"> <span>About Me</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="start-item sm bold">My Computer</div>
+                    <div class="start-item sm bold">My Network Places</div>
+                </div>
+            </div>
+            
+            <div class="start-search-area">
+                <div class="search-box">
+                    <label for="start-search">Search:</label>
+                    <input type="text" id="start-search" placeholder="Search..." autocomplete="off" />
+                </div>
+                
+                <img src="./assets/media/rover.gif" class="search-dog" alt="Rover">
+               
+            </div>
+
+            <div class="start-footer">
+                <div class="footer-btn" onclick="triggerShutdown()"><div class="icon-off"></div> Turn Off Computer</div>
+                <div class="footer-btn" onclick="location.reload()"><div class="icon-restart"></div> Restart</div>
+            </div>
+        </div>
+
+        <div id="taskbar">
+            <div id="start-btn" onclick="toggleStartMenu()">
+                <div class="win-logo"></div>
+                 start
+            </div>
+
+
+
+            <div class="taskbar-divider"></div>
+            
+            <div id="taskbar-apps"></div>
+
+            <div id="tray">
+                <div class="tray-icon"><img src="./assets/images/tray-network.png" alt="Net"></div>
+                <div class="tray-icon"><img src="./assets/images/tray-volume.png" alt="Vol"></div>
+                <div class="tray-icon"><img src="./assets/images/ble.png" alt="ble"></div>
+                <div id="clock">12:00 PM</div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="sound-startup" src="./assets/sounds/startup.mp3"></audio>
+    <audio id="sound-shutdown" src="./assets/sounds/shutdown.mp3"></audio>
+    <audio id="sound-click" src="./assets/sounds/click.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
