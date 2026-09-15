@@ -1,0 +1,28 @@
+/* Reset & Base */
+* { box-sizing: border-box; user-select: none; }
+body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; font-family: 'Tahoma', sans-serif; background: #000; }
+
+.screen { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s; }
+.hidden { display: none !important; opacity: 0; pointer-events: none; }
+
+/* Boot Screen */
+#boot-screen { background: black; color: white; flex-direction: column; }
+.boot-content { text-align: center; }
+
+.xp-logo-large { font-size: 2rem; margin-bottom: 20px; font-weight: bold; }
+.xp-orange { color: #F75E00; font-style: italic; }
+
+.boot-loader { width: 200px; height: 15px; border: 1px solid #555; border-radius: 3px; padding: 2px; margin: 20px auto; background: #000; position: relative; overflow: hidden; }
+.loader-bar { width: 100%; height: 100%; display: flex; gap: 2px; align-items: center; justify-content: flex-start; }
+.block { width: 15px; height: 100%; background: linear-gradient(to bottom, #2d56a8, #5289d6, #2d56a8); border-radius: 2px; animation: blockPulse 1s infinite ease-in-out; opacity: 0.75; }
+.block:nth-child(1) { animation-delay: 0s; }
+.block:nth-child(2) { animation-delay: 0.2s; }
+.block:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blockPulse {
+    0%, 100% { transform: translateY(0); opacity: 0.75; }
+    50% { transform: translateY(-45%); opacity: 1; }
+}
+
+.branding-text { color: white; font-size: 1.2rem; margin-top: 10px; }
+.copyright { font-size: 0.8rem; position: absolute; bottom: 20px; right: 20px; color: #aaa; }
