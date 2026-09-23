@@ -24,7 +24,7 @@ const APPS = {
 
     chrome:      { title: 'Google Chrome', icon: './assets/images/chrome.png',   type: 'iframe', url: 'https://www.google.com/' },
     linkedin:    { title: 'LinkedIn',      icon: './assets/images/linkedin.png', type: 'iframe', url: 'https://www.linkedin.com/in/vismay-rao-bn-22ba78376/' },
-    instagram:   { title: 'Instagram',     icon: './assets/images/insta.png',    type: 'iframe', url: 'https://www.instagram.com/heartless._.28/' },
+    instagram:   { title: 'Instagram',     icon: './assets/images/insta.png',    type: 'iframe', url: 'https://www.instagram.com/vismay._.1431/' },
     github:      { title: 'GitHub',        icon: './assets/images/github.png',   type: 'iframe', url: 'https://github.com/VISMAY2005' }
 };
 
@@ -417,7 +417,7 @@ function openWindow(app) {
                     
                     <h6>
                     <p>
-                         I’m Vismay Rao B. N., a Computer Science and Electronics undergraduate with a strong interest in AI, 
+                         I’m Vismay Rao B. N., Lead Instructor in GyaanKool Research Labs, Computer Science and Electronics graduate with a strong interest in AI, 
                     machine learning, and practical software development. 
                     I enjoy building real-world projects that combine technology, creativity, and problem-solving —
                      especially in areas like assistive systems, IoT, and intelligent applications.
@@ -433,7 +433,7 @@ function openWindow(app) {
                      </p>
 
                      <p>
-                     I’m continuously learning and aiming to build technology that is useful, reliable, and impactful. 
+                     I’m continuously learning teaching and also aiming to build technology that is useful, reliable, and impactful. 
                         </p>
                      
                      </h6>
